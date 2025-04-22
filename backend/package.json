@@ -1,0 +1,50 @@
+{
+  "name": "crud-core-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsup --watch --onSuccess=\"node ./dist/index.js \"",
+    "build": "tsup",
+    "start": "node ./dist/indexer/index.js",
+    "lint:type": "tsc --noEmit",
+    "lint:all": "biome check . --write && tsc --noEmit",
+    "db:up": "export $(grep -v '^#' .env.development | xargs) && docker compose -f ./scripts/db.yml up -d",
+    "db:down": "export $(grep -v '^#'  .env.development | xargs) && docker compose -f ./scripts/db.yml down"
+  },
+  "author": "James mensah",
+  "keywords": [
+    "crud service"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "body-parser": "^2.2.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-async-handler": "^1.2.0",
+    "http-errors": "^2.0.0",
+    "http-status": "^2.1.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.13.2",
+    "status": "^0.0.13",
+    "tsup": "^8.4.0",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "winston-transport": "^4.9.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/lodash": "^4.17.16",
+    "@types/node": "^22.14.1",
+    "biome": "^0.3.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}
