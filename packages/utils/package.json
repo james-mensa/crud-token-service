@@ -1,0 +1,22 @@
+{
+  "name": "@packages/utils",
+  "version": "1.0.0",
+  "description": "",
+ "main": "src/index.ts",
+  "scripts": {
+    "lint": "biome check",
+    "lint:type": "tsc --noEmit",
+		"lint:fix": "biome check . --write"
+  },
+  "keywords": [
+    "utilities"
+  ],
+  "author": "James mensash",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "biome": "^0.3.3"
+  }
+}
