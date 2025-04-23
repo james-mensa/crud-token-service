@@ -1,3 +1,4 @@
+import { Pagination } from "../../utils/types";
 
 export enum TokenType {
     ERC20 = 'ERC-20',
@@ -13,4 +14,8 @@ export interface Token{
     decimal?: number;
     tokenID?: number;
     tokenIconUri?: string;
+}
+
+export interface TokenQuery extends Partial<Token> , Pagination{
+    
 }

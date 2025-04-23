@@ -3,6 +3,7 @@ import { ajv } from '../../utils/validator/aj-validator';
 import { Token, TokenType } from '../schema/token.schema.interface';
 
 export const TokenDocumentResponseId = 'TokenDocumentResponseId';
+export const TokenUniqueId = 'TokenUniqueId';
 
 export const TokenDocumentSchema: JSONSchemaType<Token> = {
   $id: TokenDocumentResponseId,
@@ -23,4 +24,16 @@ export const TokenDocumentSchema: JSONSchemaType<Token> = {
   additionalProperties: false,
 };
 
+export const TokenUniqueSchema: JSONSchemaType<{
+  address:string
+}> = {
+  $id: TokenUniqueId,
+  type: 'object',
+  properties: {
+    address: { type: 'string' },
+  },
+  required: ['address'],
+  additionalProperties: false,
+};
 ajv.addSchema(TokenDocumentSchema);
+ajv.addSchema(TokenUniqueSchema);

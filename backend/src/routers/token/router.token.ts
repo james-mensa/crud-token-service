@@ -1,54 +1,41 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import asyncHandler from 'express-async-handler';
-import createError from 'http-errors';
-import httpStatus from 'http-status';
-import _ from 'lodash';
-import createHttpError from 'http-errors';
 import { validateRequest } from '../../middlewares/validateRequest';
-import { TokenDocumentResponseId } from '../../db/dto/token.dto';
+import { TokenDocumentResponseId, TokenUniqueId } from '../../db/dto/token.dto';
+import { TokenController } from '../../controller/token.controller';
 
 const tokenRouter = express.Router();
 
+const tokenController=new TokenController()
 
 
 
 tokenRouter.post(
     '/token',
     validateRequest(TokenDocumentResponseId,'body'),
-    asyncHandler(async (req: Request, res: Response) => { 
-        res.status(httpStatus.OK).json({  });
-    }),
-);
-tokenRouter.get(
-    '/token',
-    asyncHandler(async (req: Request, res: Response) => { 
-        res.status(httpStatus.OK).json({ msg:'okay' });
-    }),
-);
+    asyncHandler(tokenController.add));
 
 tokenRouter.get(
-    '/token:id',
-    validateRequest(TokenDocumentResponseId,'query'),
-    asyncHandler(async (req: Request, res: Response) => { 
-        res.status(httpStatus.OK).json({  });
-    }),
+    '/token',
+    asyncHandler(tokenController.getQuery));
+
+tokenRouter.get(
+    '/token/:address',
+    validateRequest(TokenUniqueId,'params'),
+    asyncHandler(tokenController.getByAddress)
 );
 
 
 tokenRouter.put(
-    '/token:id',
-    validateRequest(TokenDocumentResponseId,'query'),
-    asyncHandler(async (req: Request, res: Response) => { 
-        res.status(httpStatus.OK).json({  });
-    }),
+    '/token/:address',
+    validateRequest(TokenUniqueId,'params'),
+    asyncHandler(tokenController.updateOne)
 );
 
 tokenRouter.delete(
-    '/token:id',
-    validateRequest(TokenDocumentResponseId,'query'),
-    asyncHandler(async (req: Request, res: Response) => { 
-        res.status(httpStatus.OK).json({  });
-    }),
+    '/token/:address',
+    validateRequest(TokenUniqueId,'params'),
+    asyncHandler(tokenController.delete)
 );
 
 export default tokenRouter;

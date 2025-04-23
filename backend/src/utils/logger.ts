@@ -47,7 +47,7 @@ export default class Logger{
                         winston.format.printf((info) => {
                             const { timestamp, level, message, ...args } = info;
                             const ts = (timestamp as string).replace('T', ' ');
-                            return `${ts} [\x1b[36m${Cluster.isPrimary ? 0 : Cluster.worker?.id} : ${module}\x1b[0m] [${level}]: ${message} ${Object.keys(args).length ? `${prettyJ(args)}` : ''}`;
+                            return `${ts} [\x1b[36m${this.ctx}\x1b[0m] [${level}]: ${message} ${Object.keys(args).length ? `${prettyJ(args)}` : ''}`;
                         }),
                     ),
                     level: LOG_CONSOLE_LEVEL,
