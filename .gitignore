@@ -1,0 +1,12 @@
+
+
+# Node.js
+node_modules/
+
+# artifacts
+build/
+dist/
+# env files
+.env
+.env.production
+.env.development

@@ -1,0 +1,20 @@
+{
+  "name": "crud-token-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James mensah",
+  "license": "ISC",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "backend/*",
+    "frontend-web/*"
+  ],
+  "dependencies": {
+    "biome": "^0.3.3"
+  }
+}

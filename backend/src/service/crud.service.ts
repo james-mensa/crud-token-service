@@ -1,5 +1,4 @@
 
-
 /**
  * CrudService Class
  * A reusable generic database CRUD class for handling common operations on a Mongoose model.
@@ -11,7 +10,6 @@
 
 import Logger, { ILogger } from "../utils/logger";
 import { ResponseType } from "../utils/types";
-
 export class CrudService<T, AddModel = T> {
   private model: any;
   private logger:ILogger;

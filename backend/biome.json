@@ -42,7 +42,7 @@
       }
     },
     "files": {
-      "include": ["src/**/*"],
+      "include": ["src/**/*","packages/**/*"],
       "ignore": [
         "node_modules/",
         "dist/",
