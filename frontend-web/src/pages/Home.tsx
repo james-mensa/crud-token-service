@@ -1,14 +1,14 @@
 import { Box, Typography } from "@mui/material"
+import { TokenFormDialog } from "../components/common-ui/models/TokenFormDialog"
 
  const Home=()=>{
 
     return(<Box 
     sx={{
-        backgroundColor:"red"
+        backgroundColor:"red",
+        height:"1000px"
     }}>
-        <Typography>
-            Home
-        </Typography>
+       <TokenFormDialog/>
 
     </Box>)
 }
