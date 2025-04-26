@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev:backend": "npm run dev --workspace=@crud-token-service/backend",
-    "dev:frontend": "npm run start --workspace=@crud-token-service/frontend-web",
+    "dev:frontend": "npm run dev --workspace=@crud-token-service/frontend-web",
     "build:frontend": "npm run build --workspace=@crud-token-service/frontend-web",
     "lint-type:backend": "npm run lint:type --workspace=@crud-token-service/backend",
     "lint-all:backend": "npm run lint:all --workspace=@crud-token-service/backend",

@@ -15,13 +15,10 @@ export const useFormManager = <T extends Record<string, any>>(initialFields: T) 
     submitAttempt?: boolean;
   };
 
-  const [formState, setFormState] = useState<FormState>(() => ({
-    ...Object.keys(initialFields).reduce((acc, key) => {
-      acc[key as keyof T] = '' as T[keyof T];
-      return acc;
-    }, {} as FormFields<T>),
+  const [formState, setFormState] = useState<FormState>({
+    ...initialFields,
     submitAttempt: false,
-  }));
+  });
 
   /**
    * Handles updating the value of a form input or select field.

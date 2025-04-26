@@ -27,7 +27,6 @@ export const TokenFormDialog = () => {
     tokenSymbol: "",
     tokenIconUri: "",
   });
-
   return (
     <Box>
       <Button onClick={handleOnOpen}>New Token</Button>

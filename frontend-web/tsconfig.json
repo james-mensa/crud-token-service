@@ -22,5 +22,16 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "baseUrl": "./src",
+  "paths": {
+    "@hooks/*": ["./hooks/*"],
+    "@components/*": ["./components/*"],
+    "@assets/*": ["./assets/*"],
+    "@apis/*": ["./apis/*"],
+    "@config/*": ["./config/*"],
+    "@routers/*": ["./routers/*"],
+    "@styles/*": ["./styles/*"],
+    "@utils/*": ["./utils/*"]
+  }
 }

@@ -4,10 +4,7 @@ import { TokenFormDialog } from "../components/common-ui/models/TokenFormDialog"
  const Home=()=>{
 
     return(<Box 
-    sx={{
-        backgroundColor:"red",
-        height:"1000px"
-    }}>
+    sx={{}}>
        <TokenFormDialog/>
 
     </Box>)
