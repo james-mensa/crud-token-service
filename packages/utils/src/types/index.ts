@@ -14,3 +14,21 @@ export enum TokenType {
     tokenID?: number;
     tokenIconUri?: string
   }
+
+  export interface ResponseType<T>{
+      message?:string,
+      data:T| null,
+      details?:object | string
+  }
+  
+  export interface Pagination {
+    total_records: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+  }
+  export interface ClientResponse<T> extends ResponseType<T>  {
+      pagination?: Pagination
+  }
