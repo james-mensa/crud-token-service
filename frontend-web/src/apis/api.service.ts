@@ -1,6 +1,7 @@
-import { ClientResponse, IPagination } from "../config/types";
-import { handleError } from "../utils/handleError";
-import { authApiClient } from "./apiClient";
+import { RequestResponse } from "../utils/types";
+import { handleError } from "../utils/errorHandler";
+import { ApiClient } from "./apiClient";
+import { ClientResponse } from "@packages/utils";
 
 /**
  * Service class to handle API requests with various HTTP methods.
@@ -22,35 +23,19 @@ class ApiService {
     endpoint: string,
     data?: object,
     headers?: Record<string, string>
-  ): Promise<ClientResponse<T>> {
-    let response: ClientResponse<T> = { message: "", success: false };
+  ): Promise<RequestResponse<T>> {
+    let response: RequestResponse<T> = { message: "",data:null, success: false };
     try {
-      const res = await authApiClient[method](endpoint, data, { headers });
+      const res = await ApiClient[method](endpoint, data, { headers });
       if ([200, 201, 202, 204, 205, 206].includes(res.status)) {
-        let pagination: IPagination = {
-          current_page: null,
-          page_size: null,
-          total_pages: null,
-          hasPreviousPage: false,
-          hasNextPage: false,
-        };
-        if (res.data?.extras?.pagination) {
-          const paginationData = res.data?.extras?.pagination;
-          pagination = {
-            current_page: paginationData.current_page,
-            page_size: paginationData.page_size,
-            hasPreviousPage: paginationData.previous_page ? true : false,
-            hasNextPage: paginationData.next_page ? true : false,
-            total_pages: paginationData.total_pages,
-          };
-        }
+   
+        const clientResponse:ClientResponse<T>=res.data
         return {
+          ...clientResponse,
           message:
-            res.status === 204
+          res.status === 204
               ? "Request successful"
               : res.data?.message || "Request completed successfully.",
-          data: res.status === 204 ? undefined : (res.data?.data as T),
-          pagination,
           success: true,
         };
       }
@@ -60,7 +45,6 @@ class ApiService {
         message: `Unexpected response status: ${res.status}`,
       };
     } catch (error) {
-      // console.log({error})
       const errorMessage = handleError(error);
       response.message = errorMessage.message;
     }

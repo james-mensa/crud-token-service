@@ -4,17 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:backend": "npm run dev --workspace=@crud-token-service/backend",
+    "dev:frontend": "npm run start --workspace=@crud-token-service/frontend-web",
+    "build:frontend": "npm run build --workspace=@crud-token-service/frontend-web",
+    "lint-type:backend": "npm run lint:type --workspace=@crud-token-service/backend",
+    "lint-all:backend": "npm run lint:all --workspace=@crud-token-service/backend",
+    "dev:app": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "format": "biome format .",
+    "check": "biome check ."
   },
   "author": "James mensah",
   "license": "ISC",
   "private": true,
   "workspaces": [
     "packages/*",
-    "backend/*",
-    "frontend-web/*"
+    "backend",
+    "frontend-web"
   ],
   "dependencies": {
     "biome": "^0.3.3"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }
