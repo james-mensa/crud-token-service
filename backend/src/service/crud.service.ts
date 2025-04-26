@@ -9,7 +9,7 @@
  */
 
 import Logger, { ILogger } from "../utils/logger";
-import { ResponseType } from "../utils/types";
+import { ResponseType } from "@packages/utils";
 export class CrudService<T, AddModel = T> {
   private model: any;
   private logger:ILogger;

@@ -3,8 +3,7 @@ import { TokenModel } from "../db/schema/token.schema";
 import { Token, TokenQuery } from "../db/schema/token.schema.interface";
 import { CrudService } from "../service/crud.service";
 import Logger, { ILogger } from "../utils/logger";
-import { PaginationResponse } from "../utils/types";
-
+import {ClientResponse} from '@packages/utils'
 export class TokenController {
   private logger: ILogger;
 
@@ -32,8 +31,8 @@ export class TokenController {
 
     try {
       const { page=1, limit=50, ...query } = req.query as TokenQuery;
-      console.log({query})
-      const [total, data] = await Promise.all([
+ 
+      const [total_records, data] = await Promise.all([
         TokenModel.countDocuments(query),
         TokenModel
             .find(query)
@@ -42,11 +41,11 @@ export class TokenController {
             .limit(limit)
             .exec(),
     ]);
-    const totalPages= Math.ceil(total / Math.max(limit, 1))
-    const response:PaginationResponse<Token[]>= {
+    const totalPages= Math.ceil(total_records / Math.max(limit, 1))
+    const response:ClientResponse<Token[]>= {
         data,
         pagination: {
-          total,
+          total_records,
           page,
           limit,
           totalPages,
