@@ -4,7 +4,8 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "WebWorker"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -18,20 +19,24 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "paths": {
+      "@hooks/*": ["./hooks/*"],
+      "@components/*": ["./components/*"],
+      "@assets/*": ["./assets/*"],
+      "@apis/*": ["./apis/*"],
+      "@config/*": ["./config/*"],
+      "@routers/*": ["./routers/*"],
+      "@styles/*": ["./styles/*"],
+      "@utils/*": ["./utils/*"],
+      "@pages/*": ["./pages/*"],
+      "@store/*":["./store/*"]
+    }
+
   },
   "include": [
     "src"
   ],
-  "baseUrl": "./src",
-  "paths": {
-    "@hooks/*": ["./hooks/*"],
-    "@components/*": ["./components/*"],
-    "@assets/*": ["./assets/*"],
-    "@apis/*": ["./apis/*"],
-    "@config/*": ["./config/*"],
-    "@routers/*": ["./routers/*"],
-    "@styles/*": ["./styles/*"],
-    "@utils/*": ["./utils/*"]
-  }
+
 }
