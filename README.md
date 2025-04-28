@@ -1,10 +1,9 @@
-# 🔄 Crud Token Service  
+# Crud Token Service  
 
 *A full-stack monorepo for token management with modern web technologies*  
-
 ---
 
-## **Project **  
+##  Project Structure 
 
 ```bash
 crud-token-service/
@@ -13,7 +12,7 @@ crud-token-service/
 ├── packages/            # Shared code
 ├── package.json         # Workspace configuration
 └── README.md            # Project documentation
-
+```
 ## Workspaces
 
 - `backend/` — The backend service
