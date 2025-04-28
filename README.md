@@ -1,6 +1,6 @@
 # Crud Token Service  
 
-<small>*A full-stack monorepo for token management with modern web technologies*</small>
+full-stack monorepo for token management with modern web technologies
 ---
 
 ##  Project Structure 
