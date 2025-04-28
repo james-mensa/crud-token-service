@@ -1,10 +1,7 @@
 # Crud Token Service  
-
 full-stack monorepo for token management with modern web technologies
----
 
 ##  Project Structure 
-
 ```bash
 crud-token-service/
 ├── backend/             # Node.js backend service
@@ -35,7 +32,6 @@ crud-token-service/
    cd crud-token-service
    npm install
    ```
-## Commands
 
 | Command                         | Action                                                   |
 |---------------------------------|----------------------------------------------------------|
