@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { TokenModel } from "../db/schema/token.schema";
-import { Token, TokenQuery } from "../db/schema/token.schema.interface";
+import { Token} from "../db/schema/token.schema.interface";
 import { CrudService } from "../service/crud.service";
 import Logger, { ILogger } from "../utils/logger";
-import {ClientResponse} from '@packages/utils'
+import {ClientResponse, TokenQuery} from '@packages/utils'
 export class TokenController {
   private logger: ILogger;
 
@@ -17,7 +17,7 @@ export class TokenController {
       const token = req.body as Token;
       const result =await this.tokenCrud.add(token, {
         contractAddress: token.contractAddress
-      });
+      },true);
       res.status(200).json(result)
     } catch (error) {
       res.status(400).send({
@@ -30,7 +30,8 @@ export class TokenController {
   getQuery = async (req: Request, res: Response) => {
 
     try {
-      const { page=1, limit=50, ...query } = req.query as TokenQuery;
+      
+      const { page=1, limit=50, ...query } = req.query as unknown as  TokenQuery;
  
       const [total_records, data] = await Promise.all([
         TokenModel.countDocuments(query),
@@ -54,7 +55,6 @@ export class TokenController {
         },
     };
       res.status(200).json(response)
-      this.logger.info("Get all ")
     } catch (error) {
       res.status(400).send({
         message:'Internal Error',
@@ -64,9 +64,16 @@ export class TokenController {
   };
   getByAddress = async (req: Request, res: Response) => {
     const address=req.params.address as string
+ 
     try {
       const result =await this.tokenCrud.findOne({contractAddress:address});
-      res.status(200).json(result)
+      if(result?.data !==null){
+        res.status(200).json({...result,message:'token detail retrieved'})
+      }else{
+        res.status(404).json({...result,message:'Record not found'})
+      }
+
+      
     } catch (error) {
       res.status(400).send({
         message:'Internal Error',

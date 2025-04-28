@@ -32,3 +32,6 @@ export enum TokenType {
   export interface ClientResponse<T> extends ResponseType<T>  {
       pagination?: Pagination
   }
+  export interface TokenQuery extends Partial<Token> ,Pick<Pagination,'page' | 'limit'>{
+    
+  }

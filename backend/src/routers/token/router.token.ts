@@ -11,29 +11,29 @@ const tokenController=new TokenController()
 
 
 tokenRouter.post(
-    '/token',
+    '/tokens',
     validateRequest(TokenDocumentResponseId,'body'),
     asyncHandler(tokenController.add));
 
 tokenRouter.get(
-    '/token',
+    '/tokens',
     asyncHandler(tokenController.getQuery));
 
 tokenRouter.get(
-    '/token/:address',
+    '/tokens/:address',
     validateRequest(TokenUniqueId,'params'),
     asyncHandler(tokenController.getByAddress)
 );
 
 
 tokenRouter.put(
-    '/token/:address',
+    '/tokens/:address',
     validateRequest(TokenUniqueId,'params'),
     asyncHandler(tokenController.updateOne)
 );
 
 tokenRouter.delete(
-    '/token/:address',
+    '/tokens/:address',
     validateRequest(TokenUniqueId,'params'),
     asyncHandler(tokenController.delete)
 );
