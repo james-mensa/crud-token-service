@@ -1,10 +1,12 @@
 import { RouterProvider } from 'react-router-dom'
-import RootRouter from './routers'
+import AppRouter from './routers'
 import { observer } from 'mobx-react-lite'
+import PageDialogController from './components/common-ui/models/PageDialogController'
 const App= observer(()=> {
   return (
     <div className='App'>
-      <RouterProvider router={RootRouter} future={{v7_startTransition:true}}/>
+      <RouterProvider router={AppRouter} future={{v7_startTransition:true}}/>
+      <PageDialogController/>
     </div>
   )
 })

@@ -1,7 +1,8 @@
-import { RequestResponse } from "../utils/types";
-import { handleError } from "../utils/errorHandler";
-import { ApiClient } from "./apiClient";
+
 import { ClientResponse } from "@packages/utils";
+import { RequestResponse } from "@utils/types";
+import { ApiClient } from "./apiClient";
+import { handleError } from "@utils/errorHandler";
 
 /**
  * Service class to handle API requests with various HTTP methods.

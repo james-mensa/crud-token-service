@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SelectChangeEvent } from "@mui/material";
-import { isFormFilled } from "../utils/common";
+import { isFormFilled } from "@utils/common";
+
 
 /**
  * Generic type for form fields structure.
@@ -71,6 +72,7 @@ export const useFormManager = <T extends Record<string, any>>(initialFields: T) 
     requiredFields?: (keyof T | "submitAttempt")[],
     excludeFields?: (keyof T | "submitAttempt")[]
   ): boolean => {
+    console.log({formState})
     return isFormFilled<FormState>(formState, requiredFields, excludeFields);
   };
 
@@ -80,7 +82,7 @@ export const useFormManager = <T extends Record<string, any>>(initialFields: T) 
    * @param validation - Optional configuration for required and excluded fields.
    * @returns Object containing `isValid` and the form `data`.
    */
-  const handleFormSubmit = (validation?: {
+  const onFormSubmit = (validation?: {
     requiredFields?: (keyof T)[];
     excludeFields?: (keyof T)[];
   }): { isValid: boolean; data: T } => {
@@ -116,7 +118,7 @@ export const useFormManager = <T extends Record<string, any>>(initialFields: T) 
     hasFieldError,
     getFormData,
     validateForm,
-    handleFormSubmit,
+    onFormSubmit,
     resetForm,
     setSubmitAttempt,
   };

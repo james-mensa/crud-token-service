@@ -1,5 +1,6 @@
 export const appConfig = {
-  backendUrl: process.env.REACT_APP_BACKEND_URL ?? "",
+  backendUrl: import.meta.env.VITE_APP_BACKEND_URL,
+  app_version:import.meta.env.VITE_APP_VERSION
 
 } as const;
 
