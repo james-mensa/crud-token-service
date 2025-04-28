@@ -12,6 +12,7 @@ interface TextInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   error?: boolean;
+   type?: React.HTMLInputTypeAttribute
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
@@ -22,6 +23,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   value,
   error,
   errorMessage,
+  type
 }) => {
   return (
     <Stack width={"100%"} height={60} gap={0.3}>
@@ -42,6 +44,7 @@ export const TextInput: React.FC<TextInputProps> = ({
         name={name}
         onChange={onChange}
         value={value}
+        type={type}
       />
       {error && (
         <Typography variant="caption" color={"red"} sx={{ marginLeft: 1 }}>
@@ -55,24 +58,25 @@ export const TextInput: React.FC<TextInputProps> = ({
 const styles = {
   inputProps: {
     "& .MuiOutlinedInput-root": {
+      fontSize:'13px',
       "& fieldset": {
-        borderColor: "#D0D5DD",
+        borderColor: grey[400],
         borderRadius: "8px",
       },
       "&:hover fieldset": {
-        borderColor: "#D0D5DD",
+        borderColor: grey[400],
         borderRadius: "8px",
       },
       "&.Mui-focused fieldset": {
-        borderColor: "#D0D5DD",
+        borderColor: grey[400],
         borderRadius: "8px",
       },
     },
     "& .MuiInputBase-input": {
-      color: "#667085",
+      color: grey[800],
     },
     "& .MuiInputBase-input::placeholder": {
-      color: "#667085",
+      color: grey[600],
     },
   },
 };

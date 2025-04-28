@@ -7,7 +7,7 @@ import Modal from '@mui/material/Modal';
 interface BaseModelProps{
     children:React.ReactElement,
     isOpen:boolean
-    handleClose:()=>void
+    handleClose?:()=>void
 }
 export const BaseModal=({children,isOpen,handleClose}:BaseModelProps)=> {
 
